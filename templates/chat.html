@@ -62,7 +62,32 @@
 
                 {% endfor %}
               </ol>
-            {% endif %}
+
+              <a href="/create-room">
+
+                <h2 style="color:red;">
+                  Click me:
+
+                  <em style="color:blue;">
+                    to Create New Room...
+                  </em>
+
+                </h2>
+              </a>
+
+              {% else %}
+              <a href="/signup">
+
+                <h2 style="color:red;">
+                  Click me:
+
+                  <em style="color:blue;">
+                    SignUp to chat...
+                  </em>
+
+                </h2>
+              </a>
+              {% endif %}
 
           </div>
         </center>
