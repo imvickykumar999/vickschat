@@ -17,10 +17,11 @@ from werkzeug.utils import secure_filename
 from vicks.encrypt import encryptpdf as enc, imgtopdf as imf
 from flask import Flask, flash, url_for, session, request, redirect, render_template, send_from_directory
 # from vicks import terminal
+import qrcode
+from PIL import Image
 
 UPLOAD_FOLDER = 'uploads'
 try:
-    import os
     os.mkdir('uploads')
 except Exception as e:
     print(e)
@@ -49,6 +50,30 @@ def allowed_file(filename):
 @app.route("/")
 def share():
     return render_template("share.html")
+
+@app.route("/qrcode")
+def qrcode():
+    return render_template("qrcode.html")
+
+@app.route('/converted_qrcode', methods=['POST'])
+def converted_qrcode():
+
+    # img = qrcode.QRCode(
+    #     version=1,
+    #     error_correction=qrcode.constants.ERROR_CORRECT_L,
+    #     box_size=10,
+    #     border=4,
+    # )
+    #
+    # img.add_data(data)
+    # img.make(fit=True)
+    # img = img.make_image(fill_color="black", back_color="yellow")
+
+    data = request.form['qrcode']
+    photo = '../static/logo/qr.jpg'
+    img = qrcode.make(data)
+    img.save(photo)
+    return render_template("qrcode.html")
 
 @app.route("/morse")
 def morse():
