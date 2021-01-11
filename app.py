@@ -117,7 +117,7 @@ def convert_ipynb():
     file_name = request.form['ipynb']
 
     if file_name == '':
-        file_name = 'https://github.com/stuti24m/Real-time-Emotion-Detection/raw/master/Realtime_Emotion_Analysis.ipynb'
+        file_name = 'https://raw.githubusercontent.com/imvickykumar999/vixtor/master/vixtor.ipynb'
 
     infolist = ipynbinfo('source', file_name)
     # for i in infolist:
