@@ -125,7 +125,7 @@ def convert_ipynb():
     #         print(j)
     #     print('='*n, end='\n\n')
 
-    return render_template('ipynb.html', infolist = infolist, range = range(50))
+    return render_template('ipynb.html', infolist = infolist, range = range(40))
 
 @app.route("/morse")
 def morse():
