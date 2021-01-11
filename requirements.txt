@@ -27,4 +27,3 @@ flask-login
 qrcode==6.1
 Pillow==8.1.0
 urllib3==1.26.2
-AST==0.0.2
