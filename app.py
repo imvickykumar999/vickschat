@@ -17,8 +17,10 @@ from werkzeug.utils import secure_filename
 from vicks.encrypt import encryptpdf as enc, imgtopdf as imf
 from flask import Flask, flash, url_for, session, request, redirect, render_template, send_from_directory
 # from vicks import terminal
-import qrcode
+
+import qrcode, qrcode.image.svg
 from PIL import Image
+import ast, json, urllib.request as ur
 
 UPLOAD_FOLDER = 'uploads'
 try:
@@ -58,22 +60,72 @@ def qrcode():
 @app.route('/converted_qrcode', methods=['POST'])
 def converted_qrcode():
 
-    # img = qrcode.QRCode(
-    #     version=1,
-    #     error_correction=qrcode.constants.ERROR_CORRECT_L,
-    #     box_size=10,
-    #     border=4,
-    # )
-    #
-    # img.add_data(data)
-    # img.make(fit=True)
-    # img = img.make_image(fill_color="black", back_color="yellow")
-
     data = request.form['qrcode']
-    photo = '../static/logo/qr.jpg'
-    img = qrcode.make(data)
+    photo = '../static/logo/qr.svg'
+
+    factory = qrcode.image.svg.SvgImage
+    img = qrcode.make(data, image_factory=factory)
+
     img.save(photo)
     return render_template("qrcode.html")
+
+@app.route("/ipynb")
+def ipynb():
+    return render_template("ipynb.html")
+
+@app.route('/converted_ipynb', methods=['POST'])
+def convert_ipynb():
+
+    def ipynbinfo(info, file_name):
+        def call(file_name):
+
+            if 'http' == file_name[0:4]:
+                print('\nPlease WAIT, content is loading from URL...\n')
+                su = ur.urlopen(str(file_name)).read().decode('ascii')
+
+            elif '{' == file_name[0]:
+                su = file_name
+
+            elif '\\' or '/' in file_name:
+                su = open(file_name).read()
+
+            try:
+                y = json.loads(str(su))
+            except:
+                y = su
+            return ast.literal_eval(str(y))
+
+        def recdict(d):
+            try:
+                box.append(d[info])
+            except Exception as e:
+                pass
+
+            for i in list(d.values()):
+                if type(i) == list:
+                    for j in i:
+
+                        if type(j) == dict:
+                            recdict(j)
+
+                if type(i) == dict:
+                    recdict(i)
+            return box
+        return recdict(call(file_name))
+
+    n, box = 130, []
+    file_name = request.form['ipynb']
+
+    if file_name == '':
+        file_name = 'https://github.com/stuti24m/Real-time-Emotion-Detection/raw/master/Realtime_Emotion_Analysis.ipynb'
+
+    infolist = ipynbinfo('source', file_name)
+    # for i in infolist:
+    #     for j in i:
+    #         print(j)
+    #     print('='*n, end='\n\n')
+
+    return render_template('ipynb.html', infolist = infolist, range = range(50))
 
 @app.route("/morse")
 def morse():
