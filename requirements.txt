@@ -26,6 +26,6 @@ pymongo
 flask-login
 qrcode==6.1
 Pillow==8.1.0
-urllib
+urllib3==1.26.2
 json
 AST==0.0.2
