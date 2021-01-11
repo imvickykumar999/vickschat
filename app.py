@@ -167,7 +167,7 @@ def upload_file():
         # return render_template('complete.html', aloc=aloc)
 
 #         pyperclip.copy(loc)
-        flash(f'Shareable link is https://vickshare.herokuapp.com/{loc}')
+        flash(f'Shareable link is https://vickschat.herokuapp.com/{loc}')
         return redirect(f'/{loc}')
 
 # def redirect(loc):
