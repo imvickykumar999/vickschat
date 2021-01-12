@@ -60,43 +60,53 @@
 
 <body>
 
-  <div class="card">
+  <div class="jumbotron jumbotron-fluid">
     <!-- {{infolist}} -->
 
-    {% for i in infolist %}
-      {% for j in i %}
-        <h4>
-          <strong>
-            {{j}}
-          </strong>
-        </h4>
-      {% endfor %}
-      <strong>
-        {% for x in range %}
-        =
+      {% for i in infolist %}
+      <div class="jumbotron">
+
+        {% for j in i %}
+          <h5>
+            <strong>
+              {{j}}
+            </strong>
+          </h5>
+
         {% endfor %}
-      </strong>
-      <br>
-    {% endfor %}
-  </div>
+      </div>
+
+        <br>
+      {% endfor %}
+    </div>
 
     <form method="post" action="/converted_ipynb">
 
       <div class="alert alert-primary" role="alert">
         <center>
+          <div class="alert alert-warning" role="alert">
+
+            <h2 style="color:green;">
+              <strong>
+                Enter ipynb file Contents :
+              </strong>
+            </h2>
+          </div>
+
           <h4>
             <strong>
-                Enter ipynb file Contents :
-                <br>
-                (either raw link or, copy and paste file text or, just press Submit button)
-                <br>
+              <br>
+                (either raw link ...or, <br> copy and paste file text ...or, <br> just press Submit button)
+                <br><br>
+
                 <a style="color:red;" href="https://raw.githubusercontent.com/imvickykumar999/vixtor/master/vixtor.ipynb">
                   for example : https://raw.githubusercontent.com/imvickykumar999/vixtor/master/vixtor.ipynb
                 </a>
              </strong>
+             <br>
           </h4>
 
-          <input type="text" name="ipynb"/>
+          <input type="text" name="ipynb" placeholder="Paste here"/>
           <br><br>
 
           <div class="alert alert-danger" role="alert">
