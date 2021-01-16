@@ -74,7 +74,7 @@ def converted_qrcode():
 
 @app.route("/ipynb")
 def ipynb():
-    return render_template("ipynb.html")
+    return render_template("ipynb.html", infolist = ["Output"])
 
 @app.route('/converted_ipynb', methods=['POST'])
 def convert_ipynb():
