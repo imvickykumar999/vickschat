@@ -132,7 +132,7 @@ def convert_ipynb():
 
 @app.route("/morse")
 def morse():
-    return render_template("morse.html")
+    return render_template("morse.html", text = "Output")
 
 @app.route('/converted_morse', methods=['POST'])
 def convert_morse():
