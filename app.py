@@ -18,7 +18,7 @@ from vicks.encrypt import encryptpdf as enc, imgtopdf as imf
 from flask import Flask, flash, url_for, session, request, redirect, render_template, send_from_directory
 # from vicks import terminal
 
-import qrcode, qrcode.image.svg
+from flask_qrcode import QRcode
 from PIL import Image
 import ast, json, urllib.request as ur
 
@@ -61,13 +61,12 @@ def qrcode():
 def converted_qrcode():
 
     data = request.form['qrcode']
-    photo = '../static/logo/qr.svg'
+    qrcode = QRcode()
+    img = qrcode(data, border=10)
 
-    factory = qrcode.image.svg.SvgImage
-    img = qrcode.make(data, image_factory=factory)
-
-    img.save(photo)
-    return render_template("qrcode.html")
+    return render_template("qrcode.html",
+                            img=img,
+                            data=data)
 
 @app.route("/ipynb")
 def ipynb():
