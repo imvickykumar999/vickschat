@@ -55,7 +55,8 @@ def share():
 
 @app.route("/qrcode")
 def qrcode():
-    return render_template("qrcode.html")
+    data = "data"
+    return render_template("qrcode.html", data=data)
 
 @app.route('/converted_qrcode', methods=['POST'])
 def converted_qrcode():
