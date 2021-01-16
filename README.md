@@ -2,6 +2,7 @@
 
 ## >>> Run `heroku logs -t -a vickschat` in CMD to check errors in deployed site.
 
+# >>> Download [this website](https://vickschat.herokuapp.com/qrcode) in form of Android App.
 [![app.jpeg](https://github.com/imvickykumar999/vickschat/blob/main/static/logo/app.jpeg?raw=true)](https://appsgeyser.io/13031887/VickService)
 
 ### >>> [Shareable link looks like...](https://vickschat.herokuapp.com/uploads/Annotation_2021-01-01_113155.png)
