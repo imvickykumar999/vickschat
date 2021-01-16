@@ -55,8 +55,11 @@ def share():
 
 @app.route("/qrcode")
 def qrcode():
-    data = "data"
-    return render_template("qrcode.html", data=data)
+    data = "https://appsgeyser.io/13031887/VickService"
+    img = "static/logo/app.jpeg"
+    return render_template("qrcode.html",
+                            data=data,
+                            img=img)
 
 @app.route('/converted_qrcode', methods=['POST'])
 def converted_qrcode():
