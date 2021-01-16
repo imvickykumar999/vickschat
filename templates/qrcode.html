@@ -60,14 +60,16 @@
 
 <body>
 
-  <div id="output" class="card">
-    <a href={{data}}>
-      <img src="{{img}}"
-      alt="qrcode"
-      width="600"
-      height="600">
-    </a>
-  </div>
+    {% if data != "data" %}
+        <div id="output" class="card">
+            <a href={{data}}>
+              <img src="{{img}}"
+              alt="qrcode"
+              width="600"
+              height="600">
+            </a>
+        </div>
+    {% endif %}
 
     <form method="post" action="/converted_qrcode">
 
