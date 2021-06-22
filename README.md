@@ -1,4 +1,4 @@
-# >>> [Chat Room, Share Files, Read News, Morse Converter](https://vickschat.herokuapp.com/news) ...and many more multi-functional website.
+# >>> [Chat Room, Share Files, Read News, Morse Converter](https://imvickykumar999.herokuapp.com/news) ...and many more multi-functional website.
 
 ## >>> Run `heroku logs -t -a vickschat` in CMD to check errors in deployed site.
 
